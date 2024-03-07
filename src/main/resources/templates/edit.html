@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .table-container {
+            font-family: Arial, sans-serif;
+        }
+
+        .table-container table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .table-container tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1> Edit User</h1>
+<table class="table-container">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>Last Name</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.country}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h1>Edit User</h1>
+<form th:action="@{/edited(id=${id})}" th:method="post" th:object="${editUserForm}">
+    <a>Id : </a><a th:text="${id}"></a><br>
+    <label for="firstName">First Name</label><br>
+    <input type="text" th:field="*{firstName}">
+    <br>
+    <label for="lastName">Last Name</label><br>
+    <input type="text" th:field="*{lastName}">
+    <br>
+    <label for="country">Country</label><br>
+    <input type="text" th:field="*{country}">
+    <br><br>
+    <button type="submit">Edit</button>
+</form>
+</body>
+</html>
